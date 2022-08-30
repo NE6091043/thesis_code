@@ -312,7 +312,7 @@ class DQN:
         #     self.epsilon_increment if self.epsilon < self.epsilon_max else self.epsilon_max
         self.learn_step_counter += 1
 
-    def plot_loss(self):
+    def plot_reward(self):
         plt.plot(np.arange(len(self.reward_his)), self.reward_his)
         plt.ylabel('Reward')
         plt.xlabel('training steps')
@@ -455,7 +455,7 @@ def state_post():
     at_0 = at_1
     at_1 = agent.choose_action(np.array(st_2))
 
-    agent.append(reward)
+    agent.reward_his.append(reward)
 
     if at_1 == 0:
         print("coap")
@@ -524,7 +524,7 @@ if __name__ == '__main__':
     # app.debug = True
     app.run(host='140.116.247.69', port=9000)
     if begin_plot == 1:
-        agent.plot_loss()
+        agent.plot_reward()
         agent.saved_model("checkpoints/"+filename+"query")
         agent.savereward_his("reward_hist/"+filename+"queryrewardhis")
         agent.save_step("reward_hist/"+filename+"querystep")
