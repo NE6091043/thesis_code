@@ -1,0 +1,22 @@
+package org.eclipse.om2m.core.notifier;
+
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.PostMethod;
+
+public class state_action {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String url = "http://140.116.247.69:9000/state_action";
+		HttpClient httpclient = new HttpClient();
+		PostMethod httpMethod = new PostMethod(url);
+		StringBuilder sb = new StringBuilder();
+		sb.append(Notifier.datasize);
+		sb.append("//");
+		sb.append(ChangeWanem.loss_rate);
+		sb.append("//");
+		sb.append(ChangeWanem.bandwidth);
+		
+	}
+
+}

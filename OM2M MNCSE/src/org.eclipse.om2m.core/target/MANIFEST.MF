@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.om2m.core;singleton:=true
+Export-Package: org.eclipse.om2m.core.comm,org.eclipse.om2m.core.const
+ ants,org.eclipse.om2m.core.router
+Bundle-Name: org.eclipse.om2m Core Plugin
+Bundle-Version: 0.8.0.20220725-1909
+Bundle-ClassPath: .,libs/eclipselink.jar,libs/javax.persistence.jar,li
+ bs/h2-1.4.186.jar,libs/org.eclipse.paho.client.mqttv3-1.1.0.jar,libs/
+ commons-httpclient-3.1.jar,libs/http-20070405.jar
+Require-Bundle: org.apache.commons.codec,org.eclipse.osgi,org.eclipse.
+ om2m.commons,org.apache.commons.logging,org.eclipse.om2m.comm.service
+ ,org.eclipse.om2m.ipu.service,org.eclipse.om2m.core.service,org.apach
+ e.commons.httpclient,org.apache.commons.httpclient
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.om2m.core.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.apache.commons.httpclient;version="3.1.0"
+

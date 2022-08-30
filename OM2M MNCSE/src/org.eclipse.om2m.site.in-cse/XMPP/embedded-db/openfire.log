@@ -1,0 +1,17 @@
+/*C4*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C5*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C6*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C4*/SET AUTOCOMMIT FALSE
+DELETE FROM OFID WHERE IDTYPE=19
+INSERT INTO OFID VALUES(19,51)
+COMMIT
+SET AUTOCOMMIT TRUE
+/*C5*/INSERT INTO OFOFFLINE VALUES('admin',46,'001656642706477',115,'<message from="ubuntu" to="admin@ubuntu"><body>A server or plugin update was found: Openfire 4.7.1</body></message>')
+/*C6*/INSERT INTO OFOFFLINE VALUES('admin',47,'001656642706494',115,'<message from="ubuntu" to="admin@ubuntu"><body>A server or plugin update was found: Openfire 4.7.1</body></message>')
+/*C4*/DELETE FROM OFPROPERTY WHERE NAME='update.lastCheck'
+INSERT INTO OFPROPERTY VALUES('update.lastCheck','1656642707209')
+/*C5*/DELETE FROM OFPROPERTY WHERE NAME='update.lastCheck'
+INSERT INTO OFPROPERTY VALUES('update.lastCheck','1656642707317')

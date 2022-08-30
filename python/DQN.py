@@ -425,7 +425,7 @@ def state_post():
 
     if idx > 0:
         if reward_list[(idx-1) % 3][1] == False:
-            reward2 = -1000
+            reward2 = -10
         else:
             reward2 = reward_list[(idx-1) % 3][0]
         reward_list[(idx-1) % 3][1] = False
@@ -455,6 +455,8 @@ def state_post():
     at_0 = at_1
     at_1 = agent.choose_action(np.array(st_2))
 
+    agent.append(reward)
+
     if at_1 == 0:
         print("coap")
         return "coap"
@@ -467,7 +469,7 @@ def state_post():
     if at_1 == 3:
         print("xmpp")
         return "xmpp"
-    return "mqtt"
+    return ""
 
 
 @app.route('/receive_reward', methods=['POST'])
