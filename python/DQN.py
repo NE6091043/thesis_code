@@ -30,7 +30,7 @@ class DQN:
             # gamma
             reward_decay=0.9,
             e_greedy=0.9,
-            # 多少不步把eval network參數更新到target network
+            # 多少步把eval network參數更新到target network
             replace_target_iter=200,
             memory_size=5000,
             # 神經網路提升時 有stochastic gradient descent
