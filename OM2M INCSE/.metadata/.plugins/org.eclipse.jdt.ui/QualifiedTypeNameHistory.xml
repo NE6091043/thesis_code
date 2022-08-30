@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.UnsupportedEncodingException"/>
+<fullyQualifiedTypeName name="java.nio.charset.Charset"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.time.Instant"/>
+<fullyQualifiedTypeName name="org.eclipse.persistence.jpa.jpql.parser.DateTime"/>
+<fullyQualifiedTypeName name="java.time.LocalTime"/>
+<fullyQualifiedTypeName name="org.eclipse.om2m.core.redirector.handle_http"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.ConnectionConfiguration.SecurityMode"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.SmackConfiguration"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="org.apache.commons.httpclient.HttpException"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="org.eclipse.om2m.core.controller.APocController"/>
+<fullyQualifiedTypeName name="org.apache.commons.httpclient.HttpClient"/>
+<fullyQualifiedTypeName name="org.apache.commons.httpclient.methods.PostMethod"/>
+<fullyQualifiedTypeName name="org.apache.commons.httpclient.methods.StringRequestEntity"/>
+</qualifiedTypeNameHistroy>

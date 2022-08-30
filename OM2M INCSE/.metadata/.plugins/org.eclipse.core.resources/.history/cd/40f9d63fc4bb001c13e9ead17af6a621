@@ -1,0 +1,143 @@
+package org.eclipse.om2m.core.redirector;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Capture_packet {
+	
+	private static String cmd="tshark -i ens38 -f \"tcp port 1883 and not ether src 00:0c:29:be:33:56\" -l";
+	
+	private static Process p=null;
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+		String cmd="sh /home/user/time.sh";
+		Runtime run = Runtime.getRuntime();
+		Process pr = null;
+		try {
+			pr = run.exec(cmd);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			pr.waitFor();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+		String line = "";
+		try {
+			line+=buf.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(line);
+		
+////		gettime();
+		
+//		try {
+//			p = Runtime.getRuntime().exec(cmd);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+////		
+//		new Thread() {
+//			public void run() {
+//				for(int i=0;i<2000;++i) {
+//					try {
+//						p.waitFor();
+//					} catch (InterruptedException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+//					  BufferedReader buf = new BufferedReader(new InputStreamReader(
+//					          p.getInputStream()));
+//					  
+//					  String line = "";
+//					  String output = "";
+//
+//					  try {
+//						while ((line = buf.readLine()) != null) {
+//						    output += line + "\n";
+//						  }
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//					  System.out.println(output);
+//				}
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		}.start();
+		
+//	        System.out.println("----- ExampleMain started -------");
+//	        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+//	            String line = null;
+//	            while (true) {
+//	                if ((line = reader.readLine()) != null) {
+//	                    System.out.println("echo>> " + line);
+//	                } else {
+//	                    //input finishes
+//	                    break;
+//	                }
+//	            }
+//	        } catch (Exception e) {
+//	            System.err.println(e);
+//	        }
+
+
+	}
+	
+	
+	public static void gettime() throws IOException, InterruptedException {
+//		String cmd="sh /home/user/filter.sh";
+//		Runtime run = Runtime.getRuntime();
+//		Process pr = null;
+//		try {
+//			pr = run.exec(cmd);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("sss1");
+//			e.printStackTrace();
+//		}
+//		try {
+//			System.out.println("sss");
+//			pr.waitFor();
+//			System.out.println("sss");
+//		} catch (InterruptedException e) {
+//			System.out.println("sss2");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+//		long len=0;
+//		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+//		String line = null;
+//		while(buf.readLine()!=null) {
+////			String item[] = line.split("\",");
+////			String length=item[5].trim();
+////			len+=Long.parseLong(length);
+//			try {
+//				line+=buf.readLine();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.println(line);
+//		}
+	}
+
+}

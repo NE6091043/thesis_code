@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.om2m.comm.coap
+Bundle-Name: coap
+Bundle-Version: 0.8.0.20220725-0713
+Bundle-ClassPath: .,libs/commons-net-3.4.jar,libs/californium-core-1.0
+ .4.jar,libs/element-connector-1.0.4.jar,libs/json.jar
+Require-Bundle: org.apache.commons.logging,org.eclipse.osgi,org.eclips
+ e.om2m.commons,org.eclipse.osgi.services,org.eclipse.om2m.comm.servic
+ e,org.eclipse.om2m.core.service
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Activator: org.eclipse.om2m.comm.coap.Activator
+Import-Package: org.eclipse.om2m.core.constants
+

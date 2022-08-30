@@ -1,0 +1,97 @@
+package org.eclipse.om2m.core.redirector;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+import org.eclipse.om2m.core.controller.APocController;
+
+public class handle_http {
+	
+//	protected static String return_protocol="ws";
+
+	private static HttpServer server = null;
+	
+//	public static int starteff=0;
+	
+	private static double efficiency=0.0;
+	
+	private static long total_throughput=0;
+	
+	private static int total_size=0;
+
+//    public static void main(String[] args) throws Exception {
+//    	
+//    	handle_http httpserver=new handle_http();
+//    	httpserver.execute();
+//    	
+//    }
+    
+    public static void execute() throws IOException {
+    	StartHTTPServer();
+//    	tshark();
+    }
+    
+    private static void StartHTTPServer() {
+    	try {
+			server = HttpServer.create(new InetSocketAddress(18686), 0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        server.createContext("/incse", new MyHandler());
+        //server.setExecutor(null); // creates a default executor
+        server.start();
+    }
+    
+    public static void tshark() throws IOException {
+		ProcessBuilder pb = new ProcessBuilder("tshark", "-l", "-i", "ens38", "-f","udp port 5683 and not ether src 00:0c:29:be:33:56");
+		Process process = pb.start();
+
+		BufferedReader br = null;
+		    //tried different numbers for BufferedReader's last parameter
+		    br = new BufferedReader(new InputStreamReader(process.getInputStream()), 1);
+		    String line = null;
+		    while ((line = br.readLine()) != null) {
+//line = line.trim().replace(" ","@");
+//1@0.000000000@192.168.101.136@→@192.168.101.134@MQTT@1725@Publish@Message@(id=3086)@[nscl/applications/NA/monitor]
+		    	String[] data = line.trim().replace(" ","@").split("@");
+//		    	System.out.println(data[6]);
+		    	int throughput=INteger.parseDouble(data[6]);
+		    	total_throughput+=throughput;
+		    }
+    }
+    
+    static class MyHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange t) throws IOException {
+        	String body="";
+        	int i;
+        	char c;
+        	total_size+=APocController.size;
+//        	efficiency=total_size/total_throughput;
+            String response = String.valueOf(total_throughput)+"//"+String.valueOf(0.0)+"//"+String.valueOf(0);
+            t.sendResponseHeaders(200, response.length());
+            InputStream is = t.getRequestBody();
+            while ((i = is.read()) != -1) {
+                c = (char) i;
+                body = (String) (body + c);
+              }
+            System.out.println(body);
+            if(!body.equals("unchanged")) {
+            	Redirector.return_protocol=body;
+            }
+            OutputStream os = t.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+            t.close();
+        }
+    }
+}
+

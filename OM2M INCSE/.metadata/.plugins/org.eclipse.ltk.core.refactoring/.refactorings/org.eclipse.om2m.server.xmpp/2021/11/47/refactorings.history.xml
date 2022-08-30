@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;org.eclipse.om2m.server.xmpp&apos;&#x0A;- Original project: &apos;org.eclipse.om2m.server.xmpp&apos;&#x0A;- Original element: &apos;org.eclipse.om2m.xmpp.openfire.test.java&apos;" description="Delete element" element1="/src\/main\/java&lt;org.eclipse.om2m.xmpp.openfire{test.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1637037064483" subPackages="false" version="1.0"/>
+</session>

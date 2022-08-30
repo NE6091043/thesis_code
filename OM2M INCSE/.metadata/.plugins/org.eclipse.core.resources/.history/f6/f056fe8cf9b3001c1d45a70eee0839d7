@@ -1,0 +1,43 @@
+package org.eclipse.om2m.core.redirector;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Capture_packet {
+
+	public static void main(String[] args) throws IOException {
+		
+		gettime();
+
+	}
+	
+	
+	public static void gettime() throws IOException, InterruptedException {
+		String cmd="sh /home/user/filter.sh";
+		Runtime run = Runtime.getRuntime();
+		Process pr = null;
+		try {
+			pr = run.exec(cmd);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			pr.waitFor();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		long len=0;
+		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+		String line = null;
+		while((line=buf.readLine())!=null) {
+			String item[] = line.split("\",");
+			String length=item[5].trim();
+			len+=Long.parseLong(length);
+			System.out.println(len);
+		}
+	}
+
+}

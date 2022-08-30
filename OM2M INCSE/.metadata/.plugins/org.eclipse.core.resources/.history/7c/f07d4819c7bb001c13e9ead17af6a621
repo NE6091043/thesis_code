@@ -1,0 +1,70 @@
+package org.eclipse.om2m.core.redirector;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Capture_packet {
+	
+//	private static String cmd="tshark -i ens38 -f \"tcp port 1883 and not ether src 00:0c:29:be:33:56\" -l";
+	
+	private static Process p=null;
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		ArrayList<String> command = new ArrayList<String>();
+		command.add("tshark -l");
+		ProcessBuilder pb = new ProcessBuilder(command);
+		Process process = pb.start();
+
+		BufferedReader br = null;
+		    //tried different numbers for BufferedReader's last parameter
+		    br = new BufferedReader(new InputStreamReader(process.getInputStream()), 1);
+		    String line = null;
+		    while ((line = br.readLine()) != null) {
+		        System.out.println(line);
+		    }
+	}
+	
+	
+	public static void gettime() throws IOException, InterruptedException {
+//		String cmd="sh /home/user/filter.sh";
+//		Runtime run = Runtime.getRuntime();
+//		Process pr = null;
+//		try {
+//			pr = run.exec(cmd);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("sss1");
+//			e.printStackTrace();
+//		}
+//		try {
+//			System.out.println("sss");
+//			pr.waitFor();
+//			System.out.println("sss");
+//		} catch (InterruptedException e) {
+//			System.out.println("sss2");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+//		long len=0;
+//		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+//		String line = null;
+//		while(buf.readLine()!=null) {
+////			String item[] = line.split("\",");
+////			String length=item[5].trim();
+////			len+=Long.parseLong(length);
+//			try {
+//				line+=buf.readLine();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.println(line);
+//		}
+	}
+
+}

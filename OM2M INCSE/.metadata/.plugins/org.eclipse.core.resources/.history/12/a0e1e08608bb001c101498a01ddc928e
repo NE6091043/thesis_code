@@ -1,0 +1,72 @@
+package org.eclipse.om2m.core.redirector;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Capture_packet {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+//		gettime();
+		new Thread() {
+		 Process p = Runtime.getRuntime().exec("tshark -i ens38 -f \"udp port 5683 and not ether src 00:0c:29:be:33:56\"");
+
+		  p.waitFor();
+		  BufferedReader buf = new BufferedReader(new InputStreamReader(
+		          p.getInputStream()));
+		  String line = "";
+		  String output = "";
+
+		  while ((line = buf.readLine()) != null) {
+		    output += line + "\n";
+		  }
+
+		  System.out.println(output);
+		  Thread.sleep(1000);
+		}
+
+	}
+	
+	
+	public static void gettime() throws IOException, InterruptedException {
+//		String cmd="sh /home/user/filter.sh";
+//		Runtime run = Runtime.getRuntime();
+//		Process pr = null;
+//		try {
+//			pr = run.exec(cmd);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("sss1");
+//			e.printStackTrace();
+//		}
+//		try {
+//			System.out.println("sss");
+//			pr.waitFor();
+//			System.out.println("sss");
+//		} catch (InterruptedException e) {
+//			System.out.println("sss2");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+//		long len=0;
+//		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+//		String line = null;
+//		while(buf.readLine()!=null) {
+////			String item[] = line.split("\",");
+////			String length=item[5].trim();
+////			len+=Long.parseLong(length);
+//			try {
+//				line+=buf.readLine();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.println(line);
+//		}
+	}
+
+}
